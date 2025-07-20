@@ -77,5 +77,5 @@ IDL1_Machine_Learning_I/
 
     - **Exploración:** notebooks/exploracion_datos.ipynb
 
-**##AUTOR:**
+# AUTOR: 
 Proyecto desarrollado por Yaseli Mendez. para el curso Machine Learning I - IDL1
