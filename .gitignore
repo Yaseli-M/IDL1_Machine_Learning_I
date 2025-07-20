@@ -1,0 +1,16 @@
+# Ignorar entorno virtual
+venv_IDL1_ML_I/
+
+# Archivos de datos
+*.csv
+*.xlsx
+
+# Archivos temporales de Python
+__pycache__/
+*.pyc
+
+# Checkpoints de Jupyter
+.ipynb_checkpoints/
+
+# Configuraciones locales de VS Code
+.vscode/
