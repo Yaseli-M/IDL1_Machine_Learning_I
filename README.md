@@ -1,81 +1,88 @@
-# IDL1_Machine_Learning_I
-Este proyecto tiene como objetivo el desarrollo de modelos de Machine Learning aplicados a un conjunto de datos sintético que simula el comportamiento de compra de clientes en una tienda de productos electrónicos.
+# IDL1 & IDL2 - Machine Learning I  
 
-# Objetivos
+Repositorio de entregas para la materia **Machine Learning I**.  
+Incluye el desarrollo de los **casos prácticos IDL1 (aprendizaje supervisado)** e **IDL2 (aprendizaje no supervisado)**.
 
-- Generar un dataset sintético de clientes y su comportamiento de compra.
-- Realizar análisis exploratorio de datos (EDA).
-- Aplicar modelos de regresión (lineal y polinómica) para predecir el monto de venta.
-- Implementar un modelo de clasificación (Random Forest) para predecir si un cliente comprará.
-- Evaluar los modelos y guardar los resultados.
+---
 
-# 📁 Estructura del Proyecto
+## 📂 Estructura del proyecto
+
 IDL1_Machine_Learning_I/
 │
-├── **data_sintetica/** # Dataset sintético generado
-├── **notebooks/** # Notebooks con análisis exploratorio
-│ └── *exploracion_datos.ipynb*
-├── **resultados_modelos/** # Resultados y predicciones exportadas
-│ ├── *regresion/*
-│ ├── *clasificacion/*
-├── **scripts/** # Scripts de modelos
-│ ├── *generar_dataset.py*
-│ ├── *modelo_regresion_lineal.ipynb*
-│ ├── *modelo_regresion_polinomica.ipynb*
-│ └── *modelo_clasificacion_rf.ipynb*
-├── **venv_IDL1_ML_I/** # Entorno virtual (ignorado por git)
-├── **.gitignore**
-├── **README.md**
-└── **requirements.txt**
+├── data/ # Datasets utilizados
+│ └── historial_compras.csv # Dataset real de clientes (IDL2)
+│
+├── notebooks/ # Notebooks del caso IDL1
+│ └── exploracion_datos.ipynb
+│
+├── notebooks_IDL2/ # Notebooks del caso IDL2
+│ ├── 01_exploracion_datos.ipynb
+│ ├── 02_clustering.ipynb
+│ └── 03_pca.ipynb
+│
+├── resultados_modelos/ # Resultados de IDL1
+│ ├── clasificacion/
+│ └── regresion/
+│
+├── resultados_IDL2/ # Resultados y gráficos de IDL2
+│ ├── clustering/
+│ │ ├── kmeans_clusters.png
+│ │ └── dbscan_clusters.png
+│ ├── pca/
+│ │ └── pca_2d.png
+│ ├── clientes_segmentados.csv
+│ └── pca_clientes.csv
+│
+├── scripts/ # Scripts del caso IDL1
+├── scripts_IDL2/ # Scripts auxiliares del caso IDL2
+│
+├── requirements.txt
+└── README.md
 
-# Tecnologías y librerías
-    - Python 3.x
-    - pandas, numpy
-    - scikit-learn
-    - matplotlib, seaborn
-    - Jupyter Notebooks
-    - Joblib
 
-# Descripción de los modelos
+---
 
-- **Regresión Lineal**: Predice el `monto_venta` a partir de variables como edad, ingresos, visitas web, etc.
-- **Regresión Polinómica**: Usa variables transformadas polinómicamente para mejorar el ajuste del modelo.
-- **Clasificación Random Forest**: Predice la probabilidad de que un cliente realice una compra (`compra` = 1 - `no compra` = 0).
+## 📘 Caso práctico IDL1 - Aprendizaje Supervisado  
 
-# Dataset Sintético
-- Generado con `sklearn.datasets.make_classification`.
-- 10,000 clientes simulados.
-- Variables: edad, ingresos, visitas web, tiempo web, productos vistos, promociones usadas.
-- Variables objetivo: `compra` (clasificación), `monto_venta` (regresión).
+**Objetivos**:
+- Implementar un modelo de **clasificación** (Random Forest).
+- Implementar un modelo de **regresión lineal y polinómica**.
+- Evaluar con métricas adecuadas (Matriz de confusión, ROC, R², RMSE).
+- Presentar resultados con gráficos.
 
-##  ¿Cómo ejecutar el proyecto?
+**Resultados principales**:
+- Se logró un modelo de clasificación con buen desempeño en predicción de compra/no compra.
+- En regresión, se ajustaron modelos lineales y polinómicos para predecir ventas futuras.
 
-1. **Clonar el repositorio:**
+Los notebooks se encuentran en `notebooks/` y los resultados exportados en `resultados_modelos/`.
 
-   cmder
+---
+
+## 📘 Caso práctico IDL2 - Aprendizaje No Supervisado  
+
+**Objetivos**:
+1. Aplicar **algoritmos de clustering** (K-Means y DBSCAN).
+2. Reducir dimensionalidad con **PCA**.
+3. Evaluar con métricas como **coeficiente de silueta** y **varianza explicada**.
+4. Analizar resultados y proponer recomendaciones prácticas.
+
+**Metodología**:
+- Dataset utilizado: `data/historial_compras.csv` (clientes, compras totales, frecuencia y monto promedio).  
+- Se estandarizaron las variables y se aplicaron:
+  - **K-Means**: identificación de segmentos de clientes con patrones claros.
+  - **DBSCAN**: detección de posibles valores atípicos.
+- Se utilizó **PCA** para reducir a 2D y facilitar la visualización de clusters.
+
+**Resultados principales**:
+- Gráficos de clusters con K-Means y DBSCAN (`resultados_IDL2/clustering/`).
+- Gráfico PCA con varianza acumulada y visualización de clientes (`resultados_IDL2/pca/`).
+- CSVs con clientes segmentados y datos transformados.
+
+---
+
+## 🚀 Cómo ejecutar el proyecto
+
+1. Clonar el repositorio:
+   ```bash
    git clone https://github.com/Yaseli-M/IDL1_Machine_Learning_I.git
    cd IDL1_Machine_Learning_I
-
-2. **Crear y activar el entorno virtual:**
-
-    python -m venv venv_IDL1_ML_I
-    venv_IDL1_ML_I\Scripts\activate
-
-3. **Instalar dependencias:**
-
-    pip install -r requirements.txt
-
-4. **Ejecutar scripts y notebooks:**
-
-    - **Generar datos:** python scripts/generar_dataset.py
-
-    - **Regresión lineal:** scripts/modelo_regresion_lineal.ipynb
-
-    - **Regresión polinómica:** scripts/modelo_regresion_polinomica.ipynb
-
-    - **Clasificación RF:** scripts/modelo_clasificacion_rf.ipynb
-
-    - **Exploración:** notebooks/exploracion_datos.ipynb
-
-#  Autor: 
-Proyecto desarrollado por Yaseli Mendez. para el curso Machine Learning I - IDL1
